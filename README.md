@@ -1,6 +1,6 @@
 # autosave.nvim
 
-Add autosave feature to neovim.
+Provide autosave functionality to Neovim.
 
 Inspired by [vim-auto-save](https://github.com/vim-scripts/vim-auto-save).
 
