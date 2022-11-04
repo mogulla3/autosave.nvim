@@ -28,6 +28,19 @@ require('autosave').setup()
 
 ### Configuration
 
+Some behaviors are customizable.
+
+```lua
+-- default settings
+require('autosave').setup({
+  enabled = true,
+  silent = false,
+  save_all_buffers = false,
+  autosave_events = { "InsertLeave", "TextChanged" },
+  postsave_hook = nil,
+})
+```
+
 #### enabled (type: boolean)
 
 Default: `true`
