@@ -33,7 +33,7 @@ local function autosave()
     end
 
     if not config.silent then
-      vim.api.nvim_echo({ { "[autosave.nvim] Saved at " .. vim.fn.strftime("%H:%M:%S") .. "." } }, true, {})
+      vim.api.nvim_echo({ { "[autosave.nvim] Saved at " .. vim.fn.strftime("%H:%M:%S") } }, true, {})
     end
   end
 end
