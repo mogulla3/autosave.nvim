@@ -62,9 +62,9 @@ function M.setup(user_config)
     end,
   })
 
-  vim.api.nvim_create_user_command('AutosaveEnable', enable_autosave, {})
-  vim.api.nvim_create_user_command('AutosaveDisable', disable_autosave, {})
-  vim.api.nvim_create_user_command('AutosaveToggle', function()
+  vim.api.nvim_create_user_command("AutosaveEnable", enable_autosave, {})
+  vim.api.nvim_create_user_command("AutosaveDisable", disable_autosave, {})
+  vim.api.nvim_create_user_command("AutosaveToggle", function()
     if config.enabled then
       disable_autosave()
     else
