@@ -4,7 +4,7 @@ local default_config = {
   enabled = true,
   silent = false,
   save_all_buffers = false,
-  autosave_events = { "InsertLeave", "TextChanged" },
+  autosave_events = { "InsertLeave", "TextChanged", "CursorHold" },
   postsave_hook = nil,
 }
 

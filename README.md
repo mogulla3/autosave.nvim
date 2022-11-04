@@ -36,7 +36,7 @@ require('autosave').setup({
   enabled = true,
   silent = false,
   save_all_buffers = false,
-  autosave_events = { "InsertLeave", "TextChanged" },
+  autosave_events = { "InsertLeave", "TextChanged", "CursorHold" },
   postsave_hook = nil,
 })
 ```
@@ -61,7 +61,7 @@ If `true`, autosave for all buffers. If `false`, autosave only the current buffe
 
 #### autosave_events (type: table)
 
-Default: `{ "InsertLeave", "TextChanged" }`
+Default: `{ "InsertLeave", "TextChanged", "CursorHold" }`
 
 Events that perform autosave.
 
