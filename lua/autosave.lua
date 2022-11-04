@@ -1,5 +1,4 @@
 local group_name = "autosave_nvim"
-
 local config
 local default_config = {
   enabled = true,
