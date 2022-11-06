@@ -29,7 +29,7 @@ local function autosave()
   vim.cmd("silent! update")
 
   if was_modified and not vim.api.nvim_buf_get_option(bufnr, "modified") then
-    if config.postsave_hook and type(config.postsave_hook) == "function" then
+    if config.postsave_hook then
       config.postsave_hook()
     end
 
@@ -49,9 +49,20 @@ local function disable_autosave()
   vim.api.nvim_echo({ { "[autosave.nvim] autosave disabled." } }, false, {})
 end
 
+local function validate_config()
+  vim.validate({
+    enabled = { config.enabled, "boolean" },
+    silent = { config.silent, "boolean" },
+    autosave_events = { config.autosave_events, "table" },
+    postsave_hook = { config.postsave_hook, { "function" }, true },
+  })
+end
+
 ---@param user_config table
 function M.setup(user_config)
   config = vim.tbl_extend("force", default_config, user_config or {})
+
+  validate_config()
 
   vim.api.nvim_create_augroup(group_name, {})
   vim.api.nvim_create_autocmd(config.autosave_events, {
