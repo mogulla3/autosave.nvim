@@ -15,6 +15,13 @@ local function autosave()
     return
   end
 
+  -- Skip unnamed buffer
+  local current_buf = vim.api.nvim_get_current_buf()
+  local bufname = vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
+  if bufname == "" then
+    return
+  end
+
   local was_modified = vim.o.modified
   if not was_modified then
     return
