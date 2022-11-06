@@ -15,19 +15,20 @@ local function autosave()
   end
 
   -- Skip unnamed buffer
-  local bufname = vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
+  local bufnr = vim.api.nvim_get_current_buf()
+  local bufname = vim.api.nvim_buf_get_name(bufnr)
   if bufname == "" then
     return
   end
 
-  local was_modified = vim.o.modified
+  local was_modified = vim.api.nvim_buf_get_option(bufnr, "modified")
   if not was_modified then
     return
   end
 
   vim.cmd("silent! update")
 
-  if was_modified and not vim.o.modified then
+  if was_modified and not vim.api.nvim_buf_get_option(bufnr, "modified") then
     if config.postsave_hook and type(config.postsave_hook) == "function" then
       config.postsave_hook()
     end
