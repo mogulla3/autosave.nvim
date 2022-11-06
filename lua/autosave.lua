@@ -21,7 +21,9 @@ local function autosave()
   end
 
   if config.save_all_buffers then
+    local current_buf = vim.api.nvim_get_current_buf()
     vim.cmd("silent! bufdo update")
+    vim.api.nvim_set_current_buf(current_buf)
   else
     vim.cmd("silent! update")
   end
