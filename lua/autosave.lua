@@ -41,12 +41,12 @@ end
 
 local function enable_autosave()
   config.enabled = true
-  vim.api.nvim_echo({ { "[autosave.nvim] autosave enabled." } }, false, {})
+  vim.api.nvim_echo({ { "[autosave.nvim] autosave enabled" } }, false, {})
 end
 
 local function disable_autosave()
   config.enabled = false
-  vim.api.nvim_echo({ { "[autosave.nvim] autosave disabled." } }, false, {})
+  vim.api.nvim_echo({ { "[autosave.nvim] autosave disabled" } }, false, {})
 end
 
 local function validate_config()
