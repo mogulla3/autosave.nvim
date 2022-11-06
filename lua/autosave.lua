@@ -3,7 +3,6 @@ local config
 local default_config = {
   enabled = true,
   silent = false,
-  save_all_buffers = false,
   autosave_events = { "InsertLeave", "TextChanged", "CursorHold" },
   postsave_hook = nil,
 }
@@ -16,7 +15,6 @@ local function autosave()
   end
 
   -- Skip unnamed buffer
-  local current_buf = vim.api.nvim_get_current_buf()
   local bufname = vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
   if bufname == "" then
     return
@@ -27,13 +25,7 @@ local function autosave()
     return
   end
 
-  if config.save_all_buffers then
-    local current_buf = vim.api.nvim_get_current_buf()
-    vim.cmd("silent! bufdo update")
-    vim.api.nvim_set_current_buf(current_buf)
-  else
-    vim.cmd("silent! update")
-  end
+  vim.cmd("silent! update")
 
   if was_modified and not vim.o.modified then
     if config.postsave_hook and type(config.postsave_hook) == "function" then

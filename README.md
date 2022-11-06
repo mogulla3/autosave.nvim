@@ -35,7 +35,6 @@ Some behaviors are customizable.
 require('autosave').setup({
   enabled = true,
   silent = false,
-  save_all_buffers = false,
   autosave_events = { "InsertLeave", "TextChanged", "CursorHold" },
   postsave_hook = nil,
 })
@@ -52,12 +51,6 @@ If `true`, autosave is enabled.
 Default: `false`
 
 If `true`, no message is output during autosave.
-
-#### save_all_buffers (type: boolean)
-
-Default: `false`
-
-If `true`, autosave for all buffers. If `false`, autosave only the current buffer.
 
 #### autosave_events (type: table)
 
