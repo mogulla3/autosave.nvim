@@ -21,14 +21,14 @@ local function autosave()
     return
   end
 
-  local was_modified = vim.api.nvim_buf_get_option(bufnr, "modified")
+  local was_modified = vim.api.nvim_get_option_value("modified", { buf = bufnr })
   if not was_modified then
     return
   end
 
   vim.cmd("silent! update")
 
-  if was_modified and not vim.api.nvim_buf_get_option(bufnr, "modified") then
+  if was_modified and not vim.api.nvim_get_option_value("modified", { buf = bufnr }) then
     if config.postsave_hook then
       config.postsave_hook()
     end
