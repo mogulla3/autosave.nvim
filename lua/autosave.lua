@@ -50,6 +50,9 @@ local function disable_autosave()
 end
 
 local function validate_config()
+  -- FIXME: In Neovim 0.11, the current usage of vim.validate() will be deprecated.
+  -- https://neovim.io/doc/user/deprecated.html#deprecated-0.11
+  -- https://neovim.io/doc/user/lua.html#vim.validate()
   vim.validate({
     enabled = { config.enabled, "boolean" },
     silent = { config.silent, "boolean" },
